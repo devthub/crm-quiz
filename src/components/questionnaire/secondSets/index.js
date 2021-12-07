@@ -1,4 +1,4 @@
-import { Divider, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Button, Divider, Stack, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -12,7 +12,6 @@ function SecondSets({
   questionnaire,
   handleSelect,
 }) {
-  console.log(questionnaire);
   return (
     <Stack spacing={2}>
       <Box
@@ -47,19 +46,35 @@ function SecondSets({
         }}
       >
         {step > 1 ? (
-          <Tooltip title="Go Back" placement="top">
-            <IconButton onClick={handlePrevious} color="primary">
+          // <Tooltip title="Go Back" placement="top">
+          //   <IconButton onClick={handlePrevious} color="primary">
+          //     <ArrowBackIcon />
+          //   </IconButton>
+          // </Tooltip>
+          <Tooltip title="Previous Question" placement="top">
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handlePrevious}
+            >
               <ArrowBackIcon />
-            </IconButton>
+            </Button>
           </Tooltip>
         ) : (
           <div />
         )}
-        <Tooltip title="Next" placement="top">
-          <IconButton onClick={handleNext} color="primary">
-            <ArrowForwardIcon />
-          </IconButton>
-        </Tooltip>
+        {questionnaire[step - 14]?.answer !== null && (
+          // <Tooltip title="Next" placement="top">
+          //   <IconButton onClick={handleNext} color="primary">
+          //     <ArrowForwardIcon />
+          //   </IconButton>
+          // </Tooltip>
+          <Tooltip title="Next Question" placement="top">
+            <Button variant="contained" color="success" onClick={handleNext}>
+              <ArrowForwardIcon />
+            </Button>
+          </Tooltip>
+        )}
       </Box>
     </Stack>
   );

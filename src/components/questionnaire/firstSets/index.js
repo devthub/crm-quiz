@@ -1,4 +1,4 @@
-import { Divider, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Button, Divider, Stack, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import DiscreteSliderSteps from "../../../common/slider";
@@ -28,13 +28,18 @@ function FirstSets({
         <Typography color="GrayText" variant="button">
           Rate yourself
           <Typography variant="button">
-            <strong> ({value === 0 ? 1 : value})</strong>
+            <strong>({value})</strong>
           </Typography>
         </Typography>
       </Box>
       <Divider />
       <Box sx={{ p: 5 }}>
-        <Typography color="gray" variant="h6" textAlign="center">
+        <Typography
+          color="gray"
+          variant="h6"
+          sx={{ fontSize: 32, fontStyle: "" }}
+          textAlign="center"
+        >
           {questionnaire[step - 1]?.question}
         </Typography>
       </Box>
@@ -50,19 +55,26 @@ function FirstSets({
         }}
       >
         {step > 1 ? (
-          <Tooltip title="Go Back" placement="top">
-            <IconButton onClick={handlePrevious} color="primary">
+          <Tooltip title="Previous Question" placement="top">
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handlePrevious}
+            >
               <ArrowBackIcon />
-            </IconButton>
+            </Button>
           </Tooltip>
         ) : (
           <div />
         )}
-        <Tooltip title="Next" placement="top">
-          <IconButton onClick={handleNext} color="primary">
-            <ArrowForwardIcon />
-          </IconButton>
-        </Tooltip>
+
+        {questionnaire[step - 1]?.answer !== 0 && (
+          <Tooltip title="Next Question" placement="top">
+            <Button variant="contained" color="success" onClick={handleNext}>
+              <ArrowForwardIcon />
+            </Button>
+          </Tooltip>
+        )}
       </Box>
     </Stack>
   );

@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-// import Questionnaire from "./components/questionnaire";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
 import FirstSets from "./components/questionnaire/firstSets";
@@ -18,7 +17,6 @@ import ScrollDialog from "./common/dialog";
 
 function App() {
   const [step, setStep] = React.useState(0);
-  // const [answers, setAnswers] = React.useState();
   const [firstSets, setFirstSets] = React.useState([]);
   const [secondSets, setSecondSets] = React.useState([]);
   const [thirdSets, setThirdSets] = React.useState([]);
@@ -32,21 +30,25 @@ function App() {
     let thirdSets = JSON.parse(window.localStorage.getItem("_quiz_thirdSets"));
 
     setStep(!steps ? 0 : steps);
-    axios
-      .get(
-        "https://quiz-questionnaire.vercel.app/api/questionnaire/get_all_questionnaire",
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        const { data } = res.data;
-        setFirstSets(!firstSets ? data.slice(0, 12) : firstSets);
-        setSecondSets(!secondSets ? data.slice(12, 22) : secondSets);
-        setThirdSets(!thirdSets ? data.slice(22, 32) : thirdSets);
-      });
+    try {
+      axios
+        .get(
+          "https://quiz-questionnaire.vercel.app/api/questionnaire/get_all_questionnaire",
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          const { data } = res.data;
+          setFirstSets(!firstSets ? data.slice(0, 12) : firstSets);
+          setSecondSets(!secondSets ? data.slice(12, 22) : secondSets);
+          setThirdSets(!thirdSets ? data.slice(22, 32) : thirdSets);
+        });
+    } catch (error) {
+      console.log("Error: ", error.message);
+    }
   }, []);
 
   const handleNext = () => {
@@ -88,150 +90,171 @@ function App() {
         mt: 5,
       }}
     >
-      <Box
-        sx={{
-          p: 5,
-          minHeight: 500,
-          width: 750,
-          minWidth: 350,
-        }}
-      >
-        {step === 0 ? (
-          <Box style={{ marginTop: 140 }}>
-            <Typography
-              variant="h5"
-              sx={{ color: "gray" }}
-              textAlign="center"
-              marginBottom={3}
-            >
-              DO YOU HAVE THE MINDSET TO{" "}
-              <span style={{ color: "black", fontWeight: "bold" }}>GROW</span>{" "}
-              <span style={{ color: "gray" }}>AND </span>
-              <span style={{ color: "black", fontWeight: "bold" }}>SCALE</span>
-              <span style={{ color: "gray" }}> ?</span>
-            </Typography>
-
-            <Divider />
-            <Box sx={{ p: 5, display: "flex", justifyContent: "center" }}>
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => setStep(1)}
+      {firstSets.length === 0 ? (
+        <div>Loading</div>
+      ) : (
+        <Box
+          sx={{
+            p: 5,
+            minHeight: 500,
+            width: 750,
+            minWidth: 350,
+          }}
+        >
+          {step === 0 ? (
+            <Box style={{ marginTop: 140 }}>
+              <Typography
+                variant="h5"
+                sx={{ color: "gray" }}
+                textAlign="center"
+                marginBottom={3}
               >
-                Start quiz
-              </Button>
-            </Box>
-          </Box>
-        ) : step >= 1 && step <= 12 ? (
-          <FirstSets
-            questionnaire={firstSets}
-            handleNext={handleNext}
-            handlePrevious={handlePrevious}
-            step={step}
-            handleChange={handleChangeFirstSets}
-            value={firstSets[step - 1]?.answer}
-          />
-        ) : step === 13 ? (
-          <Box style={{ marginTop: 140 }}>
-            <Typography
-              variant="h5"
-              sx={{ color: "gray" }}
-              textAlign="center"
-              marginBottom={3}
-            >
-              DO YOU HAVE THE TOOLS TO AND USE THEM EFFECTIVELY TO
-              <span style={{ color: "black", fontWeight: "bold" }}> SCALE</span>
-              <span style={{ color: "gray" }}> AND </span>
-              <span style={{ color: "black", fontWeight: "bold" }}>GROW</span>
-              <span style={{ color: "gray" }}> ?</span>
-            </Typography>
+                DO YOU HAVE THE MINDSET TO{" "}
+                <span style={{ color: "black", fontWeight: "bold" }}>GROW</span>{" "}
+                <span style={{ color: "gray" }}>AND </span>
+                <span style={{ color: "black", fontWeight: "bold" }}>
+                  SCALE
+                </span>
+                <span style={{ color: "gray" }}> ?</span>
+              </Typography>
 
-            <Divider />
-            <Box
-              sx={{ p: 5, display: "flex", justifyContent: "space-between" }}
-            >
-              <Tooltip title="Go Back" placement="top">
-                <IconButton onClick={handlePrevious} color="primary">
-                  <ArrowBackIcon />
-                </IconButton>
-              </Tooltip>
-              <Button variant="outlined" color="primary" onClick={handleNext}>
-                Continue quiz
-              </Button>
+              <Divider />
+              <Box sx={{ p: 5, display: "flex", justifyContent: "center" }}>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => setStep(1)}
+                >
+                  Start quiz
+                </Button>
+              </Box>
             </Box>
-          </Box>
-        ) : step > 13 && step <= 23 ? (
-          <SecondSets
-            questionnaire={secondSets}
-            handleNext={handleNext}
-            handlePrevious={handlePrevious}
-            step={step}
-            handleSelect={handleSelect}
-          />
-        ) : step === 24 ? (
-          <Box style={{ marginTop: 140 }}>
-            <Typography
-              variant="h5"
-              sx={{ color: "gray" }}
-              textAlign="center"
-              marginBottom={3}
-            >
-              DO YOU HAVE A TEAM AND CULTURE FOR GROWTH?
-            </Typography>
+          ) : step >= 1 && step <= 12 ? (
+            <FirstSets
+              questionnaire={firstSets}
+              handleNext={handleNext}
+              handlePrevious={handlePrevious}
+              step={step}
+              handleChange={handleChangeFirstSets}
+              value={firstSets[step - 1]?.answer}
+            />
+          ) : step === 13 ? (
+            <Box style={{ marginTop: 140 }}>
+              <Typography
+                variant="h5"
+                sx={{ color: "gray" }}
+                textAlign="center"
+                marginBottom={3}
+              >
+                DO YOU HAVE THE TOOLS TO AND USE THEM EFFECTIVELY TO
+                <span style={{ color: "black", fontWeight: "bold" }}>
+                  {" "}
+                  SCALE
+                </span>
+                <span style={{ color: "gray" }}> AND </span>
+                <span style={{ color: "black", fontWeight: "bold" }}>GROW</span>
+                <span style={{ color: "gray" }}> ?</span>
+              </Typography>
 
-            <Divider />
-            <Box
-              sx={{ p: 5, display: "flex", justifyContent: "space-between" }}
-            >
-              <Tooltip title="Go Back" placement="top">
-                <IconButton onClick={handlePrevious} color="primary">
-                  <ArrowBackIcon />
-                </IconButton>
-              </Tooltip>
-              <Button variant="outlined" color="primary" onClick={handleNext}>
-                Continue quiz
-              </Button>
+              <Divider />
+              <Box
+                sx={{ p: 5, display: "flex", justifyContent: "space-between" }}
+              >
+                <Tooltip title="Go Back" placement="top">
+                  <IconButton onClick={handlePrevious} color="primary">
+                    <ArrowBackIcon />
+                  </IconButton>
+                </Tooltip>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleNext}
+                >
+                  Continue quiz
+                </Button>
+              </Box>
             </Box>
-          </Box>
-        ) : step > 24 && step <= 34 ? (
-          <ThirdSets
-            questionnaire={thirdSets}
-            handleNext={handleNext}
-            handlePrevious={handlePrevious}
-            step={step}
-            handleChange={handleChangeThirdSets}
-            handleSelect={handleSelect}
-            value={thirdSets[step - 25]?.answer}
-          />
-        ) : step === 35 ? (
-          <Box style={{ marginTop: 140 }}>
-            <Typography
-              variant="h5"
-              sx={{ color: "gray" }}
-              textAlign="center"
-              marginBottom={3}
-            >
-              IF YOU ARE SURE WITH YOUR ANSWERS PLEASE CLICK FINISH
-            </Typography>
-            <Divider />
-            <Box
-              sx={{ p: 5, display: "flex", justifyContent: "space-between" }}
-            >
-              <Tooltip title="Go Back" placement="top">
-                <IconButton onClick={handlePrevious} color="primary">
-                  <ArrowBackIcon />
-                </IconButton>
-              </Tooltip>
-              <ScrollDialog />
-              <Button variant="contained" color="success" onClick={handleNext}>
-                FINISH
-              </Button>
+          ) : step > 13 && step <= 23 ? (
+            <SecondSets
+              questionnaire={secondSets}
+              handleNext={handleNext}
+              handlePrevious={handlePrevious}
+              step={step}
+              handleSelect={handleSelect}
+            />
+          ) : step === 24 ? (
+            <Box style={{ marginTop: 140 }}>
+              <Typography
+                variant="h5"
+                sx={{ color: "gray" }}
+                textAlign="center"
+                marginBottom={3}
+              >
+                DO YOU HAVE A TEAM AND CULTURE FOR GROWTH?
+              </Typography>
+
+              <Divider />
+              <Box
+                sx={{ p: 5, display: "flex", justifyContent: "space-between" }}
+              >
+                <Tooltip title="Go Back" placement="top">
+                  <IconButton onClick={handlePrevious} color="primary">
+                    <ArrowBackIcon />
+                  </IconButton>
+                </Tooltip>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleNext}
+                >
+                  Continue quiz
+                </Button>
+              </Box>
             </Box>
-          </Box>
-        ) : (
-          <QuizFinish />
-        )}
-      </Box>
+          ) : step > 24 && step <= 34 ? (
+            <ThirdSets
+              questionnaire={thirdSets}
+              handleNext={handleNext}
+              handlePrevious={handlePrevious}
+              step={step}
+              handleChange={handleChangeThirdSets}
+              handleSelect={handleSelect}
+              value={thirdSets[step - 25]?.answer}
+            />
+          ) : step === 35 ? (
+            <Box style={{ marginTop: 140 }}>
+              <Typography
+                variant="h5"
+                sx={{ color: "gray" }}
+                textAlign="center"
+                marginBottom={3}
+              >
+                IF YOU ARE SURE WITH YOUR ANSWERS PLEASE CLICK FINISH
+              </Typography>
+              <Divider />
+              <Box
+                sx={{ p: 5, display: "flex", justifyContent: "space-between" }}
+              >
+                <Tooltip title="Go Back" placement="top">
+                  <IconButton onClick={handlePrevious} color="primary">
+                    <ArrowBackIcon />
+                  </IconButton>
+                </Tooltip>
+                <ScrollDialog />
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleNext}
+                >
+                  FINISH
+                </Button>
+              </Box>
+            </Box>
+          ) : (
+            <QuizFinish />
+          )}
+        </Box>
+      )}
     </Box>
   );
 }

@@ -1,4 +1,11 @@
-import { Divider, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import {
+  Button,
+  Divider,
+  IconButton,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import DiscreteSliderSteps from "../../../common/slider";
@@ -14,7 +21,6 @@ function ThirdSets({
   value,
   questionnaire,
 }) {
-  console.log(questionnaire);
   return (
     <Stack spacing={2}>
       <Box
@@ -29,7 +35,7 @@ function ThirdSets({
         <Typography color="GrayText" variant="button">
           Rate yourself
           <Typography variant="button">
-            <strong> ({value === 0 ? 1 : value})</strong>
+            <strong> ({value})</strong>
           </Typography>
         </Typography>
       </Box>
@@ -51,19 +57,35 @@ function ThirdSets({
         }}
       >
         {step > 1 ? (
-          <Tooltip title="Go Back" placement="top">
-            <IconButton onClick={handlePrevious} color="primary">
+          // <Tooltip title="Go Back" placement="top">
+          //   <IconButton onClick={handlePrevious} color="primary">
+          //     <ArrowBackIcon />
+          //   </IconButton>
+          // </Tooltip>
+          <Tooltip title="Previous Question" placement="top">
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handlePrevious}
+            >
               <ArrowBackIcon />
-            </IconButton>
+            </Button>
           </Tooltip>
         ) : (
           <div />
         )}
-        <Tooltip title="Next" placement="top">
-          <IconButton onClick={handleNext} color="primary">
-            <ArrowForwardIcon />
-          </IconButton>
-        </Tooltip>
+        {questionnaire[step - 25]?.answer !== 0 && (
+          // <Tooltip title="Next" placement="top">
+          //   <IconButton onClick={handleNext} color="primary">
+          //     <ArrowForwardIcon />
+          //   </IconButton>
+          // </Tooltip>
+          <Tooltip title="Next Question" placement="top">
+            <Button variant="contained" color="success" onClick={handleNext}>
+              <ArrowForwardIcon />
+            </Button>
+          </Tooltip>
+        )}
       </Box>
     </Stack>
   );

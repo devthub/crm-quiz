@@ -1,4 +1,4 @@
-import { Divider, Paper, Stack, Typography, Grid } from "@mui/material";
+import { Divider, Stack, Typography, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
@@ -137,7 +137,84 @@ function QuizFinish() {
       );
     });
   }, [firstSets, secondSets, thirdSets]);
-  console.log(finalScore);
+
+  const handleClick_ReTake = () => {
+    window.localStorage.clear();
+    window.location.reload();
+  };
+
+  const renderResult = (finalScore) => {
+    if (finalScore >= 1000 && finalScore <= 1200) {
+      return (
+        <Box>
+          <Typography variant="h4" textAlign="center" marginBottom={4}>
+            Perfect Potential
+          </Typography>
+          <Box width={600} sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+            <Typography
+              textAlign="center"
+              fontFamily="monospace"
+              fontWeight="bold"
+              sx={{ color: "black", fontSize: 20 }}
+            >
+              Inside every seed of success is the potential for a great
+              harvest—potential just like yours. We want to learn more about you
+              and your business, and we know how to help—from the tools you need
+              to the mindset you’ve been struggling to achieve. This could be
+              the start of something awesome.
+            </Typography>
+          </Box>
+        </Box>
+      );
+    } else if (finalScore > 1200 && finalScore <= 1500) {
+      return (
+        <Box>
+          <Typography variant="h4" textAlign="center" marginBottom={4}>
+            Super Duo
+          </Typography>
+          <Box width={600} sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+            <Typography
+              textAlign="center"
+              fontFamily="monospace"
+              fontWeight="bold"
+              sx={{ color: "black", fontSize: 20 }}
+            >
+              You’ve got it down pretty good. You’re well-equipped, have the
+              basics of a transformative mindset down, and you probably also
+              have a great team dynamic going. You’ve got just about the right
+              foundations in place, and Transformational Hub has everything you
+              need to fill the gaps and grow like mad. It’s pretty uncanny.
+            </Typography>
+          </Box>
+        </Box>
+      );
+    } else if (finalScore > 1500 && finalScore <= 2210) {
+      return (
+        <Box marginTop={5}>
+          <Typography variant="h3" textAlign="center" marginBottom={4}>
+            Dream Team
+          </Typography>
+          <Box width={600} sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+            <Typography
+              textAlign="center"
+              fontFamily="monospace"
+              fontWeight="bold"
+              sx={{ color: "black", fontSize: 20 }}
+            >
+              Wow! Your mindset is on point for growing your business, you have
+              tools that you use effectively, and your company’s team and
+              culture are always ready to thrive in your next challenge!
+              Transformational Hub has provided businesses with the most
+              effective tools, helping to polish their growth mindset and
+              empower their employees on the road to transformation. We have a
+              feeling you could be one of those businesses too.
+            </Typography>
+          </Box>
+        </Box>
+      );
+    }
+  };
+
   return (
     <Stack spacing={2}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -148,227 +225,57 @@ function QuizFinish() {
           <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
             Final Score: {finalScore}
           </Typography>
-          <Typography
+          {/* <Typography
             variant="inherit"
             fontWeight="bold"
             fontFamily="monospace"
             textAlign="center"
           >
             {finalScore <= 1000
-              ? "Lots of work to do but it's achivable"
+              ? "Lots of work to do but it's achievable"
               : finalScore > 1000 && finalScore <= 1200
               ? "In a good position now"
               : finalScore > 1200 && finalScore <= 1500
               ? "On a great path to growth"
               : finalScore > 1500 && finalScore <= 2210 && "Ready for Growth"}
-          </Typography>
+          </Typography> */}
         </Box>
       </Box>
       <Divider />
-      <Box>
-        <Typography variant="button">First Set</Typography>
+      {/* Insert Cut Here */}
+      <div
+        style={{
+          backgroundImage: `url("https://acegif.com/wp-content/gif/confetti-10.gif")`,
+          height: 700,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          opacity: 0.4,
+        }}
+      />
+      <Box display="flex" justifyContent="center">
+        <Box
+          sx={{
+            position: "absolute",
+            top: 200,
+            // left: "49%",
+          }}
+        >
+          <Typography variant="h5" fontWeight="bold" color="green">
+            Awesome! You've successfully completed the quiz!
+          </Typography>
+          <Box display="flex" justifyContent="center" marginTop={4}>
+            {renderResult(finalScore)}
+          </Box>
+        </Box>
       </Box>
-      <Box>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }}>
-          {firstSets?.map((item) => {
-            return (
-              <Grid item xs={12} key={item.question_number}>
-                <Paper elevation={2} sx={{ p: 1 }}>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>
-                        {item.question_number}.
-                      </span>{" "}
-                      {item.question}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Self Rating:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {item.answer === 0 ? 1 : item.answer}
-                      </strong>
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Your Score:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {firstSetScoring(item.max_score, item.answer)}
-                      </strong>
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Max Score:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {item.max_score}
-                      </strong>
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Box>
-
-      {/* Second Set */}
-      {/* <Divider /> */}
-      <Box>
-        <Typography variant="button">Second Set</Typography>
-      </Box>
-      <Box>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }}>
-          {secondSets?.map((item) => {
-            return (
-              <Grid item xs={12} key={item.question_number}>
-                <Paper elevation={2} sx={{ p: 1 }}>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>
-                        {item.question_number}.
-                      </span>{" "}
-                      {item.question}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Answer:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {item.answer === 0
-                          ? "A"
-                          : item.answer === 1
-                          ? "B"
-                          : item.answer === 2
-                          ? "C"
-                          : item.answer === 3
-                          ? "D"
-                          : item.answer === 4 && "E"}
-                        . {item.choices[item.answer]}
-                      </strong>
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Your Score:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {secondSetScoring(item.question_number, item.answer) < 1
-                          ? 0
-                          : secondSetScoring(item.question_number, item.answer)}
-                      </strong>
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Max Score:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {item.max_score}
-                      </strong>
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Box>
-
-      {/* Third Set */}
-      <Box>
-        <Typography variant="button">Third Set</Typography>
-      </Box>
-      <Box>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }}>
-          {thirdSets?.map((item) => {
-            return (
-              <Grid item xs={12} key={item.question_number}>
-                <Paper elevation={2} sx={{ p: 1 }}>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>
-                        {item.question_number}.
-                      </span>{" "}
-                      {item.question}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Self Rating:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {item.answer === 0 ? 1 : item.answer}
-                      </strong>
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Your Score:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {thirdSetScoring(item.max_score, item.answer)}
-                      </strong>
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      // fontWeight="bold"
-                      sx={{ color: "#007FFF" }}
-                    >
-                      <span style={{ color: "black" }}>Max Score:</span>{" "}
-                      <strong style={{ color: "black" }}>
-                        {item.max_score}
-                      </strong>
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            );
-          })}
-        </Grid>
+      <Box display="flex" justifyContent="center">
+        <Button
+          variant="contained"
+          color="success"
+          onClick={handleClick_ReTake}
+        >
+          Re-Take Quiz
+        </Button>
       </Box>
     </Stack>
   );
