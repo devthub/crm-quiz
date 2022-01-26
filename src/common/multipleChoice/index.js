@@ -9,6 +9,7 @@ function MultipleChoice({ choices, ans, handleSelect }) {
           return (
             <Grid item xs={12} sm={12} key={index}>
               <Paper
+                className="choices"
                 sx={{
                   p: 1,
                   backgroundImage:
@@ -26,8 +27,8 @@ function MultipleChoice({ choices, ans, handleSelect }) {
                   <div
                     style={{
                       padding: 5,
-                      backgroundColor: ans !== index ? "#A1D0FF" : "white",
-                      color: ans === index ? "black" : "white",
+
+                      color: ans === index ? "black" : "black",
                       // width: "35px",
                       // minWidth: "35px",
                       width: "20px",

@@ -4,6 +4,7 @@ import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import MultipleChoice from "../../../common/multipleChoice";
+import { successTHubButtonStyles } from "../../../App";
 
 function SecondSets({
   step,
@@ -20,13 +21,13 @@ function SecondSets({
           justifyContent: "space-between",
         }}
       >
-        <Typography color="gray" variant="button">
+        <Typography color="gray" variant="button" fontSize={20}>
           Question {step - 1}
         </Typography>
       </Box>
       <Divider />
       <Box sx={{ p: 5 }}>
-        <Typography color="gray" variant="h6" textAlign="center">
+        <Typography color="gray" textAlign="center" sx={{ fontSize: 32 }}>
           {questionnaire[step - 14]?.question}
         </Typography>
       </Box>
@@ -46,16 +47,12 @@ function SecondSets({
         }}
       >
         {step > 1 ? (
-          // <Tooltip title="Go Back" placement="top">
-          //   <IconButton onClick={handlePrevious} color="primary">
-          //     <ArrowBackIcon />
-          //   </IconButton>
-          // </Tooltip>
           <Tooltip title="Previous Question" placement="top">
             <Button
               variant="contained"
               color="success"
               onClick={handlePrevious}
+              style={{ ...successTHubButtonStyles }}
             >
               <ArrowBackIcon />
             </Button>
@@ -64,13 +61,13 @@ function SecondSets({
           <div />
         )}
         {questionnaire[step - 14]?.answer !== null && (
-          // <Tooltip title="Next" placement="top">
-          //   <IconButton onClick={handleNext} color="primary">
-          //     <ArrowForwardIcon />
-          //   </IconButton>
-          // </Tooltip>
           <Tooltip title="Next Question" placement="top">
-            <Button variant="contained" color="success" onClick={handleNext}>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handleNext}
+              style={{ ...successTHubButtonStyles }}
+            >
               <ArrowForwardIcon />
             </Button>
           </Tooltip>

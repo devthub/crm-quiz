@@ -1,6 +1,11 @@
-import { Divider, Stack, Typography, Button } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+
+const resultBoxStyles = {
+  fontSize: "1.2em",
+  marginTop: "1.5em",
+};
 
 function QuizFinish() {
   const [firstSets, setFirstSets] = React.useState([]);
@@ -138,19 +143,14 @@ function QuizFinish() {
     });
   }, [firstSets, secondSets, thirdSets]);
 
-  const handleClick_ReTake = () => {
-    window.localStorage.clear();
-    window.location.reload();
-  };
-
   const renderResult = (finalScore) => {
-    if (finalScore >= 1000 && finalScore <= 1200) {
+    if (finalScore <= 1200) {
       return (
-        <Box>
+        <Box sx={{ ...resultBoxStyles }}>
           <Typography variant="h4" textAlign="center" marginBottom={4}>
             Perfect Potential
           </Typography>
-          <Box width={600} sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+          <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
             <Typography
               textAlign="center"
               fontFamily="monospace"
@@ -168,11 +168,11 @@ function QuizFinish() {
       );
     } else if (finalScore > 1200 && finalScore <= 1500) {
       return (
-        <Box>
+        <Box sx={{ ...resultBoxStyles }}>
           <Typography variant="h4" textAlign="center" marginBottom={4}>
             Super Duo
           </Typography>
-          <Box width={600} sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+          <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
             <Typography
               textAlign="center"
               fontFamily="monospace"
@@ -190,11 +190,11 @@ function QuizFinish() {
       );
     } else if (finalScore > 1500 && finalScore <= 2210) {
       return (
-        <Box marginTop={5}>
+        <Box sx={{ ...resultBoxStyles }}>
           <Typography variant="h3" textAlign="center" marginBottom={4}>
             Dream Team
           </Typography>
-          <Box width={600} sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+          <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
             <Typography
               textAlign="center"
               fontFamily="monospace"
@@ -225,20 +225,6 @@ function QuizFinish() {
           <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
             Final Score: {finalScore}
           </Typography>
-          {/* <Typography
-            variant="inherit"
-            fontWeight="bold"
-            fontFamily="monospace"
-            textAlign="center"
-          >
-            {finalScore <= 1000
-              ? "Lots of work to do but it's achievable"
-              : finalScore > 1000 && finalScore <= 1200
-              ? "In a good position now"
-              : finalScore > 1200 && finalScore <= 1500
-              ? "On a great path to growth"
-              : finalScore > 1500 && finalScore <= 2210 && "Ready for Growth"}
-          </Typography> */}
         </Box>
       </Box>
       <Divider />
@@ -251,32 +237,31 @@ function QuizFinish() {
           backgroundSize: "cover",
           opacity: 0.4,
         }}
-      />
-      <Box display="flex" justifyContent="center">
-        <Box
-          sx={{
-            position: "absolute",
-            top: 200,
-            // left: "49%",
-          }}
-        >
-          <Typography variant="h5" fontWeight="bold" color="green">
-            Awesome! You've successfully completed the quiz!
-          </Typography>
-          <Box display="flex" justifyContent="center" marginTop={4}>
-            {renderResult(finalScore)}
+      >
+        <Box display="flex" justifyContent="center">
+          <Box
+            sx={{
+              position: "absolute",
+              // top: 200,
+              // left: "49%",
+            }}
+          >
+            <Box display="flex" justifyContent="center">
+              <Typography variant="h5" fontWeight="bold" color="green">
+                Awesome! You've successfully completed the quiz!
+              </Typography>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="center"
+              marginTop={4}
+              marginBottom={5}
+            >
+              {renderResult(finalScore)}
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <Box display="flex" justifyContent="center">
-        <Button
-          variant="contained"
-          color="success"
-          onClick={handleClick_ReTake}
-        >
-          Re-Take Quiz
-        </Button>
-      </Box>
+      </div>
     </Stack>
   );
 }

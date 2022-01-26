@@ -1,17 +1,10 @@
-import {
-  Button,
-  Divider,
-  IconButton,
-  Stack,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Button, Divider, Stack, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import DiscreteSliderSteps from "../../../common/slider";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-// import MultipleChoice from "../../common/multipleChoice";
+import { successTHubButtonStyles } from "../../../App";
 
 function ThirdSets({
   step,
@@ -29,19 +22,19 @@ function ThirdSets({
           justifyContent: "space-between",
         }}
       >
-        <Typography color="gray" variant="button">
+        <Typography color="gray" variant="button" fontSize={20}>
           Question {step - 2}
         </Typography>
-        <Typography color="GrayText" variant="button">
+        <Typography color="GrayText" variant="button" fontSize={20}>
           Rate yourself
-          <Typography variant="button">
+          <Typography variant="button" fontSize={20}>
             <strong> ({value})</strong>
           </Typography>
         </Typography>
       </Box>
       <Divider />
       <Box sx={{ p: 5 }}>
-        <Typography color="gray" variant="h6" textAlign="center">
+        <Typography color="gray" textAlign="center" fontSize={32}>
           {questionnaire[step - 25]?.question}
         </Typography>
       </Box>
@@ -57,16 +50,12 @@ function ThirdSets({
         }}
       >
         {step > 1 ? (
-          // <Tooltip title="Go Back" placement="top">
-          //   <IconButton onClick={handlePrevious} color="primary">
-          //     <ArrowBackIcon />
-          //   </IconButton>
-          // </Tooltip>
           <Tooltip title="Previous Question" placement="top">
             <Button
               variant="contained"
               color="success"
               onClick={handlePrevious}
+              style={{ ...successTHubButtonStyles }}
             >
               <ArrowBackIcon />
             </Button>
@@ -75,13 +64,13 @@ function ThirdSets({
           <div />
         )}
         {questionnaire[step - 25]?.answer !== 0 && (
-          // <Tooltip title="Next" placement="top">
-          //   <IconButton onClick={handleNext} color="primary">
-          //     <ArrowForwardIcon />
-          //   </IconButton>
-          // </Tooltip>
           <Tooltip title="Next Question" placement="top">
-            <Button variant="contained" color="success" onClick={handleNext}>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handleNext}
+              style={{ ...successTHubButtonStyles }}
+            >
               <ArrowForwardIcon />
             </Button>
           </Tooltip>

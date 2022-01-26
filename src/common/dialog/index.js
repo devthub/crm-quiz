@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Typography, Box, Stack, Divider } from "@mui/material";
 
@@ -64,100 +63,93 @@ export default function ScrollDialog() {
       >
         <DialogTitle id="scroll-dialog-title">Review Answers</DialogTitle>
         <DialogContent dividers={scroll === "paper"}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
-            <Box sx={{ mt: 1, mb: 2 }}>
-              <Typography variant="button" fontWeight="bold">
-                First Set of Questions
-              </Typography>
-            </Box>
-            <Divider />
-            {firstSets?.map((item) => {
-              return (
-                <Stack>
-                  <Box>
-                    <Typography variant="caption" color="#007FFF">
-                      {item.question_number}.{item.question}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography variant="caption">
-                      Rating:{" "}
-                      <strong style={{ color: "black" }}>{item.answer}</strong>
-                    </Typography>
-                  </Box>
-                  <Divider />
-                </Stack>
-              );
-            })}
-            <Box sx={{ mt: 5, mb: 2 }}>
-              <Typography variant="button" fontWeight="bold">
-                Second Set of Questions
-              </Typography>
-            </Box>
-            <Divider />
-            {secondSets?.map((item) => {
-              return (
-                <Stack>
-                  <Box>
-                    <Typography variant="caption" color="#007FFF">
-                      {item.question_number}.{item.question}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography variant="caption">
-                      Answer:{" "}
-                      <strong style={{ color: "black" }}>
-                        {item.answer === 0
-                          ? "A"
-                          : item.answer === 1
-                          ? "B"
-                          : item.answer === 2
-                          ? "C"
-                          : item.answer === 3
-                          ? "D"
-                          : item.answer === 4 && "E"}
-                        {". "}
-                        {item.choices[item.answer]}
-                      </strong>
-                    </Typography>
-                  </Box>
-                  <Divider />
-                </Stack>
-              );
-            })}
-            <Box sx={{ mt: 5, mb: 2 }}>
-              <Typography variant="button" fontWeight="bold">
-                Third Set of Questions
-              </Typography>
-            </Box>
-            <Divider />
-            {thirdSets?.map((item) => {
-              return (
-                <Stack>
-                  <Box>
-                    <Typography variant="caption" color="#007FFF">
-                      {item.question_number}.{item.question}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography variant="caption">
-                      Rating:{" "}
-                      <strong style={{ color: "black" }}>{item.answer}</strong>
-                    </Typography>
-                  </Box>
-                  <Divider />
-                </Stack>
-              );
-            })}
-          </DialogContentText>
+          <Box sx={{ mt: 5, mb: 2 }}>
+            <Typography variant="h5" fontWeight="bold">
+              First Set of Questions
+            </Typography>
+          </Box>
+          <Divider />
+          {firstSets?.map((item, index) => {
+            return (
+              <Stack key={`_quiz_firstSets:${index}`}>
+                <Box sx={{ mt: 1 }}>
+                  <Typography variant="caption" fontSize={15}>
+                    {item.question_number}.{item.question}
+                  </Typography>
+                </Box>
+                <Box sx={{ mb: 1 }}>
+                  <Typography variant="caption" fontSize={15}>
+                    Rating:{" "}
+                    <strong style={{ color: "black" }}>{item.answer}</strong>
+                  </Typography>
+                </Box>
+                <Divider />
+              </Stack>
+            );
+          })}
+          <Box sx={{ mt: 5, mb: 2 }}>
+            <Typography variant="h5" fontWeight="bold">
+              Second Set of Questions
+            </Typography>
+          </Box>
+          <Divider />
+          {secondSets?.map((item, index) => {
+            return (
+              <Stack key={`_quiz_secondSets:${index}`}>
+                <Box sx={{ mt: 1 }}>
+                  <Typography variant="caption" fontSize={15}>
+                    {item.question_number}.{item.question}
+                  </Typography>
+                </Box>
+                <Box sx={{ mb: 1 }}>
+                  <Typography variant="caption" fontSize={15}>
+                    Answer:{" "}
+                    <strong style={{ color: "black" }}>
+                      {item.answer === 0
+                        ? "A"
+                        : item.answer === 1
+                        ? "B"
+                        : item.answer === 2
+                        ? "C"
+                        : item.answer === 3
+                        ? "D"
+                        : item.answer === 4 && "E"}
+                      {". "}
+                      {item.choices[item.answer]}
+                    </strong>
+                  </Typography>
+                </Box>
+                <Divider />
+              </Stack>
+            );
+          })}
+          <Box sx={{ mt: 5, mb: 2 }}>
+            <Typography variant="h5" fontWeight="bold">
+              Third Set of Questions
+            </Typography>
+          </Box>
+          <Divider />
+          {thirdSets?.map((item, index) => {
+            return (
+              <Stack key={`_quiz_thirdSets:${index}`}>
+                <Box sx={{ mt: 1 }}>
+                  <Typography variant="caption" fontSize={15}>
+                    {item.question_number}.{item.question}
+                  </Typography>
+                </Box>
+                <Box sx={{ mb: 1 }}>
+                  <Typography variant="caption" fontSize={15}>
+                    Rating:{" "}
+                    <strong style={{ color: "black" }}>{item.answer}</strong>
+                  </Typography>
+                </Box>
+                <Divider />
+              </Stack>
+            );
+          })}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Done</Button>
-          {/* <Button onClick={handleClose}>Subscribe</Button> */}
+          <Button onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>
