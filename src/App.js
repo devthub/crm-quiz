@@ -33,7 +33,7 @@ export const handleClick_ReTake = () => {
 };
 
 function App() {
-  const [step, setStep] = React.useState(35);
+  const [step, setStep] = React.useState(0);
   const [firstSets, setFirstSets] = React.useState([]);
   const [secondSets, setSecondSets] = React.useState([]);
   const [thirdSets, setThirdSets] = React.useState([]);
