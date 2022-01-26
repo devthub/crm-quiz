@@ -1,157 +1,89 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import { Typography, Box, Stack, Divider } from "@mui/material";
+import { Button, Divider, Stack, Tooltip, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import React from "react";
+import DiscreteSliderSteps from "../../../common/slider";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { successTHubButtonStyles } from "../../../App";
 
-export default function ScrollDialog() {
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState("paper");
-
-  const handleClickOpen = (scrollType) => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-
-  const [firstSets, setFirstSets] = React.useState([]);
-  const [secondSets, setSecondSets] = React.useState([]);
-  const [thirdSets, setThirdSets] = React.useState([]);
-
-  React.useEffect(() => {
-    let mount = true;
-    if (mount) {
-      setFirstSets(JSON.parse(window.localStorage.getItem("_quiz_firstSets")));
-      setSecondSets(
-        JSON.parse(window.localStorage.getItem("_quiz_secondSets"))
-      );
-      setThirdSets(JSON.parse(window.localStorage.getItem("_quiz_thirdSets")));
-    }
-  }, []);
-
+function FirstSets({
+  step,
+  handleNext,
+  handlePrevious,
+  handleChange,
+  value,
+  questionnaire,
+}) {
   return (
-    <div>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={handleClickOpen("paper")}
+    <Stack spacing={2}>
+      <Box
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
       >
-        Review my Answers
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-        maxWidth="500px"
+        <Typography color="gray" variant="button" fontSize={20}>
+          Question {step}
+        </Typography>
+        <Typography color="GrayText" variant="button" fontSize={20}>
+          Rate yourself
+          <Typography variant="button" fontSize={20}>
+            <strong> ({value})</strong>
+          </Typography>
+        </Typography>
+      </Box>
+      <Divider />
+      <Box sx={{ p: 5 }}>
+        <Typography
+          color="gray"
+          variant="h6"
+          sx={{ fontSize: 32, fontStyle: "" }}
+          textAlign="center"
+        >
+          {questionnaire[step - 1]?.question}
+        </Typography>
+      </Box>
+      <Box sx={{ p: 5 }}>
+        <DiscreteSliderSteps handleChange={handleChange} value={value} />
+      </Box>
+      <Box
+        style={{
+          display: "flex",
+          marginTop: 20,
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
       >
-        <DialogTitle id="scroll-dialog-title">Review Answers</DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
-          <Box sx={{ mt: 5, mb: 2 }}>
-            <Typography variant="h5" fontWeight="bold">
-              First Set of Questions
-            </Typography>
-          </Box>
-          <Divider />
-          {firstSets?.map((item, index) => {
-            return (
-              <Stack key={`_quiz_firstSets:${index}`}>
-                <Box sx={{ mt: 1 }}>
-                  <Typography variant="caption" fontSize={15}>
-                    {item.question_number}.{item.question}
-                  </Typography>
-                </Box>
-                <Box sx={{ mb: 1 }}>
-                  <Typography variant="caption" fontSize={15}>
-                    Rating:{" "}
-                    <strong style={{ color: "black" }}>{item.answer}</strong>
-                  </Typography>
-                </Box>
-                <Divider />
-              </Stack>
-            );
-          })}
-          <Box sx={{ mt: 5, mb: 2 }}>
-            <Typography variant="h5" fontWeight="bold">
-              Second Set of Questions
-            </Typography>
-          </Box>
-          <Divider />
-          {secondSets?.map((item, index) => {
-            return (
-              <Stack key={`_quiz_secondSets:${index}`}>
-                <Box sx={{ mt: 1 }}>
-                  <Typography variant="caption" fontSize={15}>
-                    {item.question_number}.{item.question}
-                  </Typography>
-                </Box>
-                <Box sx={{ mb: 1 }}>
-                  <Typography variant="caption" fontSize={15}>
-                    Answer:{" "}
-                    <strong style={{ color: "black" }}>
-                      {item.answer === 0
-                        ? "A"
-                        : item.answer === 1
-                        ? "B"
-                        : item.answer === 2
-                        ? "C"
-                        : item.answer === 3
-                        ? "D"
-                        : item.answer === 4 && "E"}
-                      {". "}
-                      {item.choices[item.answer]}
-                    </strong>
-                  </Typography>
-                </Box>
-                <Divider />
-              </Stack>
-            );
-          })}
-          <Box sx={{ mt: 5, mb: 2 }}>
-            <Typography variant="h5" fontWeight="bold">
-              Third Set of Questions
-            </Typography>
-          </Box>
-          <Divider />
-          {thirdSets?.map((item, index) => {
-            return (
-              <Stack key={`_quiz_thirdSets:${index}`}>
-                <Box sx={{ mt: 1 }}>
-                  <Typography variant="caption" fontSize={15}>
-                    {item.question_number}.{item.question}
-                  </Typography>
-                </Box>
-                <Box sx={{ mb: 1 }}>
-                  <Typography variant="caption" fontSize={15}>
-                    Rating:{" "}
-                    <strong style={{ color: "black" }}>{item.answer}</strong>
-                  </Typography>
-                </Box>
-                <Divider />
-              </Stack>
-            );
-          })}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Close</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+        {step > 1 ? (
+          <Tooltip title="Previous Question" placement="top">
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handlePrevious}
+              style={{ ...successTHubButtonStyles }}
+            >
+              <ArrowBackIcon />
+            </Button>
+          </Tooltip>
+        ) : (
+          <div />
+        )}
+
+        {questionnaire[step - 1]?.answer !== 0 && (
+          <Tooltip title="Next Question" placement="top">
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handleNext}
+              style={{ ...successTHubButtonStyles }}
+            >
+              <ArrowForwardIcon />
+            </Button>
+          </Tooltip>
+        )}
+      </Box>
+    </Stack>
   );
 }
+
+export default FirstSets;

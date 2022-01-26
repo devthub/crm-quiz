@@ -59,7 +59,6 @@ function App() {
     window.localStorage.setItem("_quiz_secondSets", JSON.stringify(secondSets));
     window.localStorage.setItem("_quiz_thirdSets", JSON.stringify(thirdSets));
   };
-
   const handlePrevious = () => {
     setStep(parseInt(step) - 1);
     window.localStorage.setItem("_quiz_firstSets", step + 1);
@@ -301,7 +300,7 @@ function App() {
         </Box>
       )}
 
-      {/* <div id={"thank-you-section"}>
+      <div id={"thank-you-section"}>
         <Box display="flex" justifyContent="center" marginTop={5}>
           <Button
             variant="contained"
@@ -312,7 +311,7 @@ function App() {
             Re-Take Quiz
           </Button>
         </Box>
-      </div> */}
+      </div>
     </>
   );
 }
