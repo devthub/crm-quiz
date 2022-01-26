@@ -299,19 +299,6 @@ function App() {
           </Button>
         </Box>
       )}
-
-      <div id={"thank-you-section"}>
-        <Box display="flex" justifyContent="center" marginTop={5}>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={handleClick_ReTake}
-            style={{ ...successTHubButtonStyles }}
-          >
-            Re-Take Quiz
-          </Button>
-        </Box>
-      </div>
     </>
   );
 }
