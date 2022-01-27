@@ -2,10 +2,10 @@ import { Divider, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
-// const resultBoxStyles = {
-//   fontSize: "1.2em",
-//   marginTop: "1.5em",
-// };
+const resultBoxStyles = {
+  fontSize: "1.2em",
+  marginTop: "1.5em",
+};
 
 function QuizFinish() {
   const [firstSets, setFirstSets] = React.useState([]);
@@ -145,77 +145,77 @@ function QuizFinish() {
     });
   }, [firstSets, secondSets, thirdSets]);
 
-  // const renderResult = (finalScore) => {
-  //   if (finalScore <= 1200) {
-  //     return (
-  //       <Box sx={{ ...resultBoxStyles }}>
-  //         <Typography variant="h4" textAlign="center" marginBottom={4}>
-  //           Perfect Potential
-  //         </Typography>
-  //         <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
-  //           <Typography
-  //             textAlign="center"
-  //             fontFamily="monospace"
-  //             fontWeight="bold"
-  //             sx={{ color: "black", fontSize: 20 }}
-  //           >
-  //             Inside every seed of success is the potential for a great
-  //             harvest—potential just like yours. We want to learn more about you
-  //             and your business, and we know how to help—from the tools you need
-  //             to the mindset you’ve been struggling to achieve. This could be
-  //             the start of something awesome.
-  //           </Typography>
-  //         </Box>
-  //       </Box>
-  //     );
-  //   } else if (finalScore > 1200 && finalScore <= 1500) {
-  //     return (
-  //       <Box sx={{ ...resultBoxStyles }}>
-  //         <Typography variant="h4" textAlign="center" marginBottom={4}>
-  //           Super Duo
-  //         </Typography>
-  //         <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
-  //           <Typography
-  //             textAlign="center"
-  //             fontFamily="monospace"
-  //             fontWeight="bold"
-  //             sx={{ color: "black", fontSize: 20 }}
-  //           >
-  //             You’ve got it down pretty good. You’re well-equipped, have the
-  //             basics of a transformative mindset down, and you probably also
-  //             have a great team dynamic going. You’ve got just about the right
-  //             foundations in place, and Transformational Hub has everything you
-  //             need to fill the gaps and grow like mad. It’s pretty uncanny.
-  //           </Typography>
-  //         </Box>
-  //       </Box>
-  //     );
-  //   } else if (finalScore > 1500 && finalScore <= 2210) {
-  //     return (
-  //       <Box sx={{ ...resultBoxStyles }}>
-  //         <Typography variant="h3" textAlign="center" marginBottom={4}>
-  //           Dream Team
-  //         </Typography>
-  //         <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
-  //           <Typography
-  //             textAlign="center"
-  //             fontFamily="monospace"
-  //             fontWeight="bold"
-  //             sx={{ color: "black", fontSize: 20 }}
-  //           >
-  //             Wow! Your mindset is on point for growing your business, you have
-  //             tools that you use effectively, and your company’s team and
-  //             culture are always ready to thrive in your next challenge!
-  //             Transformational Hub has provided businesses with the most
-  //             effective tools, helping to polish their growth mindset and
-  //             empower their employees on the road to transformation. We have a
-  //             feeling you could be one of those businesses too.
-  //           </Typography>
-  //         </Box>
-  //       </Box>
-  //     );
-  //   }
-  // };
+  const renderResult = (finalScore) => {
+    if (finalScore <= 1200) {
+      return (
+        <Box sx={{ ...resultBoxStyles }}>
+          <Typography variant="h4" textAlign="center" marginBottom={4}>
+            Perfect Potential
+          </Typography>
+          <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+            <Typography
+              textAlign="center"
+              fontFamily="monospace"
+              fontWeight="bold"
+              sx={{ color: "black", fontSize: 20 }}
+            >
+              Inside every seed of success is the potential for a great
+              harvest—potential just like yours. We want to learn more about you
+              and your business, and we know how to help—from the tools you need
+              to the mindset you’ve been struggling to achieve. This could be
+              the start of something awesome.
+            </Typography>
+          </Box>
+        </Box>
+      );
+    } else if (finalScore > 1200 && finalScore <= 1500) {
+      return (
+        <Box sx={{ ...resultBoxStyles }}>
+          <Typography variant="h4" textAlign="center" marginBottom={4}>
+            Super Duo
+          </Typography>
+          <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+            <Typography
+              textAlign="center"
+              fontFamily="monospace"
+              fontWeight="bold"
+              sx={{ color: "black", fontSize: 20 }}
+            >
+              You’ve got it down pretty good. You’re well-equipped, have the
+              basics of a transformative mindset down, and you probably also
+              have a great team dynamic going. You’ve got just about the right
+              foundations in place, and Transformational Hub has everything you
+              need to fill the gaps and grow like mad. It’s pretty uncanny.
+            </Typography>
+          </Box>
+        </Box>
+      );
+    } else if (finalScore > 1500 && finalScore <= 2210) {
+      return (
+        <Box sx={{ ...resultBoxStyles }}>
+          <Typography variant="h3" textAlign="center" marginBottom={4}>
+            Dream Team
+          </Typography>
+          <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
+            <Typography
+              textAlign="center"
+              fontFamily="monospace"
+              fontWeight="bold"
+              sx={{ color: "black", fontSize: 20 }}
+            >
+              Wow! Your mindset is on point for growing your business, you have
+              tools that you use effectively, and your company’s team and
+              culture are always ready to thrive in your next challenge!
+              Transformational Hub has provided businesses with the most
+              effective tools, helping to polish their growth mindset and
+              empower their employees on the road to transformation. We have a
+              feeling you could be one of those businesses too.
+            </Typography>
+          </Box>
+        </Box>
+      );
+    }
+  };
 
   return (
     <Stack spacing={2}>
@@ -230,30 +230,33 @@ function QuizFinish() {
         </Box>
       </Box>
       <Divider />
-      {/* Insert Cut Here
+      {/* Insert Cut Here */}
       <div
         style={{
-          backgroundImage: `url("https://acegif.com/wp-content/gif/confetti-10.gif")`,
-          width: "100%",
-          height: "20vh",
+          backgroundImage: `url("https://transformhub.com.au/wp-content/uploads/2022/01/thub-confetti.gif")`,
+          // width: "100%",
+          // height: 500,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          opacity: 0.4,
+          opacity: 0.5,
+          maxWidth: 800,
         }}
       >
         <Box display="flex" justifyContent="center">
           <Box
-            sx={{
-              position: "absolute",
-              // top: 200,
-              // left: "49%",
-            }}
+            sx={
+              {
+                // position: "absolute",
+                // top: 200,
+                // left: "49%",
+              }
+            }
           >
-            <Box display="flex" justifyContent="center">
+            {/* <Box display="flex" justifyContent="center">
               <Typography variant="h5" fontWeight="bold" color="green">
                 Awesome! You've successfully completed the quiz!
               </Typography>
-            </Box>
+            </Box> */}
             <Box
               display="flex"
               justifyContent="center"
@@ -264,7 +267,7 @@ function QuizFinish() {
             </Box>
           </Box>
         </Box>
-      </div> */}
+      </div>
     </Stack>
   );
 }
