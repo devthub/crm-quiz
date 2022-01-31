@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Typography, Box, Stack, Divider } from "@mui/material";
+import { FIVE_POINT_LIKERT_SCALE } from "../../App";
 
 export default function ScrollDialog() {
   const [open, setOpen] = React.useState(false);
@@ -80,7 +81,9 @@ export default function ScrollDialog() {
                 <Box sx={{ mb: 1 }}>
                   <Typography variant="caption" fontSize={15}>
                     Rating:{" "}
-                    <strong style={{ color: "black" }}>{item.answer}</strong>
+                    <strong style={{ color: "black" }}>
+                      {FIVE_POINT_LIKERT_SCALE[parseInt(item.answer) - 1]}
+                    </strong>
                   </Typography>
                 </Box>
                 <Divider />
@@ -140,7 +143,9 @@ export default function ScrollDialog() {
                 <Box sx={{ mb: 1 }}>
                   <Typography variant="caption" fontSize={15}>
                     Rating:{" "}
-                    <strong style={{ color: "black" }}>{item.answer}</strong>
+                    <strong style={{ color: "black" }}>
+                      {FIVE_POINT_LIKERT_SCALE[parseInt(item.answer) - 1]}
+                    </strong>
                   </Typography>
                 </Box>
                 <Divider />

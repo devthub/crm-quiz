@@ -2,6 +2,8 @@ import { Typography, Button, Tooltip, Divider } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import FirstSets from "./components/questionnaire/firstSets";
 import SecondSets from "./components/questionnaire/secondSets";
 import ThirdSets from "./components/questionnaire/thirdSets";
@@ -31,6 +33,14 @@ export const handleClick_ReTake = () => {
   window.localStorage.removeItem("_quiz_thirdSets");
   window.location.reload();
 };
+
+export const FIVE_POINT_LIKERT_SCALE = [
+  "Strongly Disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly Agree",
+];
 
 function App() {
   const [step, setStep] = React.useState(0);
@@ -95,12 +105,12 @@ function App() {
         {firstSets.length === 0 ? (
           <div>Loading</div>
         ) : (
-          <Box>
+          <Box sx={{ width: 800, minHeight: 400 }}>
             {step === 0 ? (
               <Box style={{ marginTop: 50 }}>
                 <Typography
                   variant="h5"
-                  sx={{ color: "gray", fontSize: 30 }}
+                  sx={{ color: "gray", fontSize: "1.5rem" }}
                   textAlign="center"
                   marginBottom={3}
                 >
@@ -123,7 +133,7 @@ function App() {
                     onClick={() => setStep(1)}
                     style={{ ...successTHubButtonStyles }}
                   >
-                    Start quiz
+                    Start quiz <ArrowForwardIcon />
                   </Button>
                 </Box>
               </Box>
@@ -140,7 +150,7 @@ function App() {
               <Box style={{ marginTop: 140 }}>
                 <Typography
                   variant="h5"
-                  sx={{ color: "gray", fontSize: 30 }}
+                  sx={{ color: "gray", fontSize: "1.5rem" }}
                   textAlign="center"
                   marginBottom={3}
                 >
@@ -171,7 +181,7 @@ function App() {
                       onClick={handlePrevious}
                       style={{ ...successTHubButtonStyles }}
                     >
-                      <ArrowBackIcon />
+                      <ArrowBackIcon /> BACK
                     </Button>
                   </Tooltip>
                   <Button
@@ -180,7 +190,7 @@ function App() {
                     onClick={handleNext}
                     style={{ ...successTHubButtonStyles }}
                   >
-                    Continue quiz
+                    Continue quiz <ArrowForwardIcon />
                   </Button>
                 </Box>
               </Box>
@@ -196,7 +206,7 @@ function App() {
               <Box style={{ marginTop: 140 }}>
                 <Typography
                   variant="h5"
-                  sx={{ color: "gray", fontSize: 30 }}
+                  sx={{ color: "gray", fontSize: "1.5rem" }}
                   textAlign="center"
                   marginBottom={3}
                 >
@@ -218,7 +228,7 @@ function App() {
                       onClick={handlePrevious}
                       style={{ ...successTHubButtonStyles }}
                     >
-                      <ArrowBackIcon />
+                      <ArrowBackIcon /> BACK
                     </Button>
                   </Tooltip>
                   <Button
@@ -227,7 +237,7 @@ function App() {
                     onClick={handleNext}
                     style={{ ...successTHubButtonStyles }}
                   >
-                    Continue quiz
+                    Continue quiz <ArrowForwardIcon />
                   </Button>
                 </Box>
               </Box>
@@ -266,7 +276,7 @@ function App() {
                       onClick={handlePrevious}
                       style={{ ...successTHubButtonStyles }}
                     >
-                      <ArrowBackIcon />
+                      <ArrowBackIcon /> BACK
                     </Button>
                   </Tooltip>
                   <ScrollDialog />
@@ -295,7 +305,7 @@ function App() {
             onClick={handleClick_ReTake}
             style={{ ...successTHubButtonStyles }}
           >
-            Re-Take Quiz
+            Re-Take Quiz <RefreshIcon />
           </Button>
         </Box>
       )}

@@ -1,4 +1,4 @@
-import { Button, Divider, Stack, Tooltip, Typography } from "@mui/material";
+import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -15,19 +15,8 @@ function SecondSets({
 }) {
   return (
     <Stack spacing={2}>
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography color="gray" variant="button" fontSize={20}>
-          Question {step - 1}
-        </Typography>
-      </Box>
-      <Divider />
       <Box sx={{ p: 5 }}>
-        <Typography color="gray" textAlign="center" sx={{ fontSize: 32 }}>
+        <Typography color="gray" textAlign="center" sx={{ fontSize: "1.5rem" }}>
           {questionnaire[step - 14]?.question}
         </Typography>
       </Box>
@@ -41,7 +30,6 @@ function SecondSets({
       <Box
         style={{
           display: "flex",
-          marginTop: 20,
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -54,7 +42,7 @@ function SecondSets({
               onClick={handlePrevious}
               style={{ ...successTHubButtonStyles }}
             >
-              <ArrowBackIcon />
+              <ArrowBackIcon /> BACK
             </Button>
           </Tooltip>
         ) : (
@@ -68,7 +56,7 @@ function SecondSets({
               onClick={handleNext}
               style={{ ...successTHubButtonStyles }}
             >
-              <ArrowForwardIcon />
+              NEXT <ArrowForwardIcon />
             </Button>
           </Tooltip>
         )}

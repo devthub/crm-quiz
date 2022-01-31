@@ -1,37 +1,99 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
+import {
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
+import { FIVE_POINT_LIKERT_SCALE } from "../../App";
 
-function valuetext(value) {
-  return `${value}`;
-}
-
-const marks = [
-  {
-    value: 1,
-    label: "1",
-  },
-  {
-    value: 10,
-    label: "10",
-  },
-];
+const radioLabelStyles = {
+  fontSize: "1.2rem",
+};
 
 export default function DiscreteSliderSteps({ handleChange, value }) {
+  const [isOnMobileView, setIsOnMobileView] = React.useState(false);
+
+  React.useEffect(() => {
+    if (window.innerWidth < 768) {
+      setIsOnMobileView(true);
+    } else {
+      setIsOnMobileView(false);
+    }
+  }, [value]);
+
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }}>
-      <Slider
-        aria-label="Small steps"
-        defaultValue={1}
-        getAriaValueText={valuetext}
-        step={1}
-        marks={marks}
-        min={1}
-        max={10}
-        valueLabelDisplay="auto"
-        value={value || 0}
-        onChange={handleChange}
-      />
-    </Box>
+    <>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <FormControl>
+          {/* <FormLabel id="mindset-to-grow-and-scale">Gender</FormLabel> */}
+          <RadioGroup
+            aria-labelledby="mindset-to-grow-and-scale"
+            defaultValue={"0"}
+            name="radio-buttons-group"
+            value={value}
+            onChange={handleChange}
+            row={isOnMobileView ? false : true}
+          >
+            <FormControlLabel
+              labelPlacement={isOnMobileView ? "end" : "top"}
+              value={"1"}
+              control={<Radio />}
+              label={
+                <Typography style={{ ...radioLabelStyles }}>
+                  {FIVE_POINT_LIKERT_SCALE[0]}
+                </Typography>
+              }
+            />
+
+            <FormControlLabel
+              labelPlacement={isOnMobileView ? "end" : "top"}
+              value={"2"}
+              control={<Radio />}
+              label={
+                <Typography style={{ ...radioLabelStyles }}>
+                  {FIVE_POINT_LIKERT_SCALE[1]}
+                </Typography>
+              }
+            />
+
+            <FormControlLabel
+              labelPlacement={isOnMobileView ? "end" : "top"}
+              value={"3"}
+              control={<Radio />}
+              label={
+                <Typography style={{ ...radioLabelStyles }}>
+                  {FIVE_POINT_LIKERT_SCALE[2]}
+                </Typography>
+              }
+            />
+
+            <FormControlLabel
+              labelPlacement={isOnMobileView ? "end" : "top"}
+              value={"4"}
+              control={<Radio />}
+              label={
+                <Typography style={{ ...radioLabelStyles }}>
+                  {FIVE_POINT_LIKERT_SCALE[3]}
+                </Typography>
+              }
+            />
+
+            <FormControlLabel
+              labelPlacement={isOnMobileView ? "end" : "top"}
+              value={"5"}
+              control={<Radio />}
+              label={
+                <Typography style={{ ...radioLabelStyles }}>
+                  {FIVE_POINT_LIKERT_SCALE[4]}
+                </Typography>
+              }
+            />
+          </RadioGroup>
+        </FormControl>
+      </Box>
+    </>
   );
 }

@@ -28,9 +28,9 @@ function QuizFinish() {
 
   function firstSetScoring(maxScore, score) {
     if (maxScore === 100) {
-      return score === 0 ? 1 * 10 : score * 10;
+      return score === 0 ? 1 * 20 : score * 20;
     } else {
-      return score === 0 ? 0 : 100 - score * 10;
+      return score === 0 ? 0 : 100 - score * 20;
     }
   }
 
@@ -120,9 +120,9 @@ function QuizFinish() {
 
   function thirdSetScoring(maxScore, score) {
     if (maxScore === 100) {
-      return score === 0 ? 1 * 10 : score * 10;
+      return score === 0 ? 1 * 20 : score * 20;
     } else {
-      return score === 0 ? 0 : 100 - score * 10;
+      return score === 0 ? 0 : 100 - score * 20;
     }
   }
 
@@ -132,12 +132,14 @@ function QuizFinish() {
         (prevState) => prevState + firstSetScoring(item.max_score, item.answer)
       );
     });
+
     secondSets.forEach((item) => {
       setFinalScore(
         (prevState) =>
           prevState + secondSetScoring(item.question_number, item.answer)
       );
     });
+
     thirdSets.forEach((item) => {
       setFinalScore(
         (prevState) => prevState + thirdSetScoring(item.max_score, item.answer)
@@ -149,7 +151,7 @@ function QuizFinish() {
     if (finalScore <= 1200) {
       return (
         <Box sx={{ ...resultBoxStyles }}>
-          <Typography variant="h4" textAlign="center" marginBottom={4}>
+          <Typography variant="h3" textAlign="center" marginBottom={4}>
             Perfect Potential
           </Typography>
           <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>
@@ -171,7 +173,7 @@ function QuizFinish() {
     } else if (finalScore > 1200 && finalScore <= 1500) {
       return (
         <Box sx={{ ...resultBoxStyles }}>
-          <Typography variant="h4" textAlign="center" marginBottom={4}>
+          <Typography variant="h3" textAlign="center" marginBottom={4}>
             Super Duo
           </Typography>
           <Box sx={{ backgroundColor: "rgb(255,255,255, 0.6)" }}>

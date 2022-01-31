@@ -1,4 +1,4 @@
-import { Button, Divider, Stack, Tooltip, Typography } from "@mui/material";
+import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import DiscreteSliderSteps from "../../../common/slider";
@@ -16,40 +16,24 @@ function FirstSets({
 }) {
   return (
     <Stack spacing={2}>
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography color="gray" variant="button" fontSize={20}>
-          Question {step}
-        </Typography>
-        <Typography color="GrayText" variant="button" fontSize={20}>
-          Rate yourself
-          <Typography variant="button" fontSize={20}>
-            <strong> ({value})</strong>
-          </Typography>
-        </Typography>
-      </Box>
-      <Divider />
       <Box sx={{ p: 5 }}>
         <Typography
           color="gray"
           variant="h6"
-          sx={{ fontSize: 32, fontStyle: "" }}
+          sx={{ fontSize: "1.5rem", fontStyle: "" }}
           textAlign="center"
         >
           {questionnaire[step - 1]?.question}
         </Typography>
       </Box>
+
       <Box sx={{ p: 5 }}>
         <DiscreteSliderSteps handleChange={handleChange} value={value} />
       </Box>
+
       <Box
         style={{
           display: "flex",
-          marginTop: 20,
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -62,7 +46,7 @@ function FirstSets({
               onClick={handlePrevious}
               style={{ ...successTHubButtonStyles }}
             >
-              <ArrowBackIcon />
+              <ArrowBackIcon /> BACK
             </Button>
           </Tooltip>
         ) : (
@@ -77,7 +61,7 @@ function FirstSets({
               onClick={handleNext}
               style={{ ...successTHubButtonStyles }}
             >
-              <ArrowForwardIcon />
+              NEXT <ArrowForwardIcon />
             </Button>
           </Tooltip>
         )}

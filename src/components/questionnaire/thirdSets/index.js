@@ -1,4 +1,4 @@
-import { Button, Divider, Stack, Tooltip, Typography } from "@mui/material";
+import { Button, Stack, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import DiscreteSliderSteps from "../../../common/slider";
@@ -16,25 +16,8 @@ function ThirdSets({
 }) {
   return (
     <Stack spacing={2}>
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography color="gray" variant="button" fontSize={20}>
-          Question {step - 2}
-        </Typography>
-        <Typography color="GrayText" variant="button" fontSize={20}>
-          Rate yourself
-          <Typography variant="button" fontSize={20}>
-            <strong> ({value})</strong>
-          </Typography>
-        </Typography>
-      </Box>
-      <Divider />
       <Box sx={{ p: 5 }}>
-        <Typography color="gray" textAlign="center" fontSize={32}>
+        <Typography color="gray" textAlign="center" fontSize={"1.5rem"}>
           {questionnaire[step - 25]?.question}
         </Typography>
       </Box>
@@ -44,7 +27,6 @@ function ThirdSets({
       <Box
         style={{
           display: "flex",
-          marginTop: 20,
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -57,7 +39,7 @@ function ThirdSets({
               onClick={handlePrevious}
               style={{ ...successTHubButtonStyles }}
             >
-              <ArrowBackIcon />
+              <ArrowBackIcon /> BACK
             </Button>
           </Tooltip>
         ) : (
@@ -71,7 +53,7 @@ function ThirdSets({
               onClick={handleNext}
               style={{ ...successTHubButtonStyles }}
             >
-              <ArrowForwardIcon />
+              NEXT <ArrowForwardIcon />
             </Button>
           </Tooltip>
         )}
