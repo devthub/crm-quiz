@@ -10,7 +10,7 @@ import {
 import { FIVE_POINT_LIKERT_SCALE } from "../../App";
 
 const radioLabelStyles = {
-  fontSize: "1.2rem",
+  fontSize: "2rem",
 };
 
 export default function DiscreteSliderSteps({ handleChange, value }) {
@@ -42,7 +42,7 @@ export default function DiscreteSliderSteps({ handleChange, value }) {
               value={"1"}
               control={<Radio />}
               label={
-                <Typography style={{ ...radioLabelStyles }}>
+                <Typography variant="h3" style={{ ...radioLabelStyles }}>
                   {FIVE_POINT_LIKERT_SCALE[0]}
                 </Typography>
               }
@@ -53,7 +53,7 @@ export default function DiscreteSliderSteps({ handleChange, value }) {
               value={"2"}
               control={<Radio />}
               label={
-                <Typography style={{ ...radioLabelStyles }}>
+                <Typography variant="h3" style={{ ...radioLabelStyles }}>
                   {FIVE_POINT_LIKERT_SCALE[1]}
                 </Typography>
               }
@@ -64,7 +64,7 @@ export default function DiscreteSliderSteps({ handleChange, value }) {
               value={"3"}
               control={<Radio />}
               label={
-                <Typography style={{ ...radioLabelStyles }}>
+                <Typography variant="h3" style={{ ...radioLabelStyles }}>
                   {FIVE_POINT_LIKERT_SCALE[2]}
                 </Typography>
               }
@@ -75,7 +75,7 @@ export default function DiscreteSliderSteps({ handleChange, value }) {
               value={"4"}
               control={<Radio />}
               label={
-                <Typography style={{ ...radioLabelStyles }}>
+                <Typography variant="h3" style={{ ...radioLabelStyles }}>
                   {FIVE_POINT_LIKERT_SCALE[3]}
                 </Typography>
               }
@@ -86,7 +86,7 @@ export default function DiscreteSliderSteps({ handleChange, value }) {
               value={"5"}
               control={<Radio />}
               label={
-                <Typography style={{ ...radioLabelStyles }}>
+                <Typography variant="h3" style={{ ...radioLabelStyles }}>
                   {FIVE_POINT_LIKERT_SCALE[4]}
                 </Typography>
               }

@@ -19,8 +19,8 @@ function FirstSets({
       <Box sx={{ p: 5 }}>
         <Typography
           color="gray"
-          variant="h6"
-          sx={{ fontSize: "1.5rem", fontStyle: "" }}
+          variant="h3"
+          sx={{ fontSize: "3rem", fontStyle: "" }}
           textAlign="center"
         >
           {questionnaire[step - 1]?.question}

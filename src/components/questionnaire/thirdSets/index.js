@@ -17,7 +17,12 @@ function ThirdSets({
   return (
     <Stack spacing={2}>
       <Box sx={{ p: 5 }}>
-        <Typography color="gray" textAlign="center" fontSize={"1.5rem"}>
+        <Typography
+          color="gray"
+          variant="h3"
+          textAlign="center"
+          fontSize={"3rem"}
+        >
           {questionnaire[step - 25]?.question}
         </Typography>
       </Box>

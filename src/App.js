@@ -109,8 +109,8 @@ function App() {
             {step === 0 ? (
               <Box style={{ marginTop: 50 }}>
                 <Typography
-                  variant="h5"
-                  sx={{ color: "gray", fontSize: "1.5rem" }}
+                  variant="h3"
+                  sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
                   marginBottom={3}
                 >
@@ -149,8 +149,8 @@ function App() {
             ) : step === 13 ? (
               <Box style={{ marginTop: 140 }}>
                 <Typography
-                  variant="h5"
-                  sx={{ color: "gray", fontSize: "1.5rem" }}
+                  variant="h3"
+                  sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
                   marginBottom={3}
                 >
@@ -205,8 +205,8 @@ function App() {
             ) : step === 24 ? (
               <Box style={{ marginTop: 140 }}>
                 <Typography
-                  variant="h5"
-                  sx={{ color: "gray", fontSize: "1.5rem" }}
+                  variant="h3"
+                  sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
                   marginBottom={3}
                 >
@@ -254,7 +254,7 @@ function App() {
             ) : step === 35 ? (
               <Box style={{ marginTop: 140 }}>
                 <Typography
-                  variant="h5"
+                  variant="h3"
                   sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
                   marginBottom={3}

@@ -16,7 +16,12 @@ function SecondSets({
   return (
     <Stack spacing={2}>
       <Box sx={{ p: 5 }}>
-        <Typography color="gray" textAlign="center" sx={{ fontSize: "1.5rem" }}>
+        <Typography
+          color="gray"
+          variant="h3"
+          textAlign="center"
+          sx={{ fontSize: "3rem" }}
+        >
           {questionnaire[step - 14]?.question}
         </Typography>
       </Box>
