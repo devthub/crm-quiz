@@ -5,7 +5,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Typography, Box, Stack, Divider } from "@mui/material";
-import { FIVE_POINT_LIKERT_SCALE } from "../../App";
+import {
+  FIVE_POINT_LIKERT_SCALE,
+  FIVE_POINT_PERCENTAGE_SCALE,
+} from "../../App";
 
 export default function ScrollDialog() {
   const [open, setOpen] = React.useState(false);
@@ -66,7 +69,7 @@ export default function ScrollDialog() {
         <DialogContent dividers={scroll === "paper"}>
           <Box sx={{ mt: 5, mb: 2 }}>
             <Typography variant="h5" fontWeight="bold">
-              First Set of Questions
+              Mindset to GROW and SCALE
             </Typography>
           </Box>
           <Divider />
@@ -75,14 +78,16 @@ export default function ScrollDialog() {
               <Stack key={`_quiz_firstSets:${index}`}>
                 <Box sx={{ mt: 1 }}>
                   <Typography variant="caption" fontSize={15}>
-                    {item.question_number}.{item.question}
+                    {item.question_number}. {item.question}
                   </Typography>
                 </Box>
                 <Box sx={{ mb: 1 }}>
                   <Typography variant="caption" fontSize={15}>
                     Rating:{" "}
                     <strong style={{ color: "black" }}>
-                      {FIVE_POINT_LIKERT_SCALE[parseInt(item.answer) - 1]}
+                      {item.use_percentage
+                        ? FIVE_POINT_PERCENTAGE_SCALE[parseInt(item.answer) - 1]
+                        : FIVE_POINT_LIKERT_SCALE[parseInt(item.answer) - 1]}
                     </strong>
                   </Typography>
                 </Box>
@@ -92,7 +97,7 @@ export default function ScrollDialog() {
           })}
           <Box sx={{ mt: 5, mb: 2 }}>
             <Typography variant="h5" fontWeight="bold">
-              Second Set of Questions
+              Using Tools to effectively SCALE AND GROW
             </Typography>
           </Box>
           <Divider />
@@ -101,7 +106,7 @@ export default function ScrollDialog() {
               <Stack key={`_quiz_secondSets:${index}`}>
                 <Box sx={{ mt: 1 }}>
                   <Typography variant="caption" fontSize={15}>
-                    {item.question_number}.{item.question}
+                    {item.question_number}. {item.question}
                   </Typography>
                 </Box>
                 <Box sx={{ mb: 1 }}>
@@ -128,7 +133,7 @@ export default function ScrollDialog() {
           })}
           <Box sx={{ mt: 5, mb: 2 }}>
             <Typography variant="h5" fontWeight="bold">
-              Third Set of Questions
+              Team and Culture for Growth
             </Typography>
           </Box>
           <Divider />
@@ -137,14 +142,16 @@ export default function ScrollDialog() {
               <Stack key={`_quiz_thirdSets:${index}`}>
                 <Box sx={{ mt: 1 }}>
                   <Typography variant="caption" fontSize={15}>
-                    {item.question_number}.{item.question}
+                    {item.question_number}. {item.question}
                   </Typography>
                 </Box>
                 <Box sx={{ mb: 1 }}>
                   <Typography variant="caption" fontSize={15}>
                     Rating:{" "}
                     <strong style={{ color: "black" }}>
-                      {FIVE_POINT_LIKERT_SCALE[parseInt(item.answer) - 1]}
+                      {item.use_percentage
+                        ? FIVE_POINT_PERCENTAGE_SCALE[parseInt(item.answer) - 1]
+                        : FIVE_POINT_LIKERT_SCALE[parseInt(item.answer) - 1]}
                     </strong>
                   </Typography>
                 </Box>

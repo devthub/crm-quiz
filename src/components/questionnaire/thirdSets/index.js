@@ -27,7 +27,11 @@ function ThirdSets({
         </Typography>
       </Box>
       <Box sx={{ p: 5 }}>
-        <DiscreteSliderSteps handleChange={handleChange} value={value} />
+        <DiscreteSliderSteps
+          handleChange={handleChange}
+          value={value}
+          usePercentageLabel={questionnaire[step - 25]?.use_percentage}
+        />
       </Box>
       <Box
         style={{

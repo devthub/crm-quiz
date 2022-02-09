@@ -28,7 +28,11 @@ function FirstSets({
       </Box>
 
       <Box sx={{ p: 5 }}>
-        <DiscreteSliderSteps handleChange={handleChange} value={value} />
+        <DiscreteSliderSteps
+          handleChange={handleChange}
+          value={value}
+          usePercentageLabel={questionnaire[step - 1]?.use_percentage}
+        />
       </Box>
 
       <Box

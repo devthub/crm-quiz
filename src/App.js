@@ -42,6 +42,8 @@ export const FIVE_POINT_LIKERT_SCALE = [
   "Strongly Agree",
 ];
 
+export const FIVE_POINT_PERCENTAGE_SCALE = ["20%", "40%", "60%", "80%", "100%"];
+
 function App() {
   const [step, setStep] = React.useState(0);
   const [firstSets, setFirstSets] = React.useState([]);
@@ -112,7 +114,7 @@ function App() {
                   variant="h3"
                   sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
-                  marginBottom={3}
+                  marginBottom={1}
                 >
                   DO YOU HAVE THE MINDSET TO{" "}
                   <span style={{ color: "black", fontWeight: "bold" }}>
@@ -123,6 +125,15 @@ function App() {
                     SCALE
                   </span>
                   <span style={{ color: "gray" }}> ?</span>
+                </Typography>
+                <Typography
+                  sx={{ color: "gray", fontSize: 24 }}
+                  textAlign="center"
+                  marginBottom={2}
+                >
+                  This section looks into the mindset you’ve adopted in your
+                  business and in life. Rate each item on a scale of 1 to 5,
+                  with 1 as strongly disagree and 5 as strongly agree.
                 </Typography>
 
                 <Divider />
@@ -147,12 +158,12 @@ function App() {
                 value={firstSets[step - 1]?.answer}
               />
             ) : step === 13 ? (
-              <Box style={{ marginTop: 140 }}>
+              <Box style={{ marginTop: 50 }}>
                 <Typography
                   variant="h3"
                   sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
-                  marginBottom={3}
+                  marginBottom={1}
                 >
                   DO YOU HAVE THE TOOLS TO AND USE THEM EFFECTIVELY TO
                   <span style={{ color: "black", fontWeight: "bold" }}>
@@ -164,6 +175,16 @@ function App() {
                     GROW
                   </span>
                   <span style={{ color: "gray" }}> ?</span>
+                </Typography>
+                <Typography
+                  sx={{ color: "gray", fontSize: 24 }}
+                  textAlign="center"
+                  marginBottom={2}
+                >
+                  Now it’s time to see how effective you are at putting your
+                  mindset into practice. Each item in this section varies in
+                  measuring your answer in order to gain a more accurate
+                  insight.
                 </Typography>
 
                 <Divider />
@@ -203,14 +224,23 @@ function App() {
                 handleSelect={handleSelect}
               />
             ) : step === 24 ? (
-              <Box style={{ marginTop: 140 }}>
+              <Box style={{ marginTop: 50 }}>
                 <Typography
-                  variant="h3"
+                  variant="h5"
                   sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
-                  marginBottom={3}
+                  marginBottom={1}
                 >
                   DO YOU HAVE A TEAM AND CULTURE FOR GROWTH?
+                </Typography>
+                <Typography
+                  sx={{ color: "gray", fontSize: 24 }}
+                  textAlign="center"
+                  marginBottom={2}
+                >
+                  This section looks into the mindset you’ve adopted in your
+                  business and in life. Rate each item on a scale of 1 to 5,
+                  with 1 as strongly disagree and 5 as strongly agree.
                 </Typography>
 
                 <Divider />
@@ -254,7 +284,7 @@ function App() {
             ) : step === 35 ? (
               <Box style={{ marginTop: 140 }}>
                 <Typography
-                  variant="h3"
+                  variant="h5"
                   sx={{ color: "gray", fontSize: 30 }}
                   textAlign="center"
                   marginBottom={3}

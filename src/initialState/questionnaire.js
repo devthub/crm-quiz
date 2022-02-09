@@ -6,6 +6,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 2,
@@ -14,6 +15,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "subract 10 points for each 1 eg 1=10 - 2=20",
     max_score: 0,
+    use_percentage: false,
   },
   {
     question_number: 3,
@@ -22,6 +24,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 4,
@@ -30,6 +33,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 5,
@@ -38,6 +42,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 6,
@@ -46,6 +51,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 7,
@@ -55,6 +61,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "subract 10 points for each 1 eg 1=10 - 2=20",
     max_score: 0,
+    use_percentage: false,
   },
   {
     question_number: 8,
@@ -63,6 +70,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 9,
@@ -71,6 +79,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 10,
@@ -79,6 +88,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 11,
@@ -88,6 +98,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 12,
@@ -97,6 +108,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points for each 1 eg 1=10 - 2=20",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 13,
@@ -105,6 +117,7 @@ export const questionnaire = [
     choices: ["1-5%", "6-10%", "11-20%", "21% and above"],
     scoring: "add 25 points per level",
     max_score: 100,
+    use_percentage: true,
   },
   {
     question_number: 14,
@@ -115,6 +128,7 @@ export const questionnaire = [
     scoring:
       "add 25 points for level A. subract 25 points for each b c d total possible subtraction is 75",
     max_score: 25,
+    use_percentage: false,
   },
   {
     question_number: 15,
@@ -123,6 +137,7 @@ export const questionnaire = [
     answer: null,
     scoring: "add 25 for yes subtract 25 for no",
     max_score: 25,
+    use_percentage: false,
   },
   {
     question_number: 16,
@@ -132,6 +147,7 @@ export const questionnaire = [
     answer: null,
     scoring: "add 10 points per level",
     max_score: 40,
+    use_percentage: true,
   },
   {
     question_number: 17,
@@ -140,6 +156,7 @@ export const questionnaire = [
     answer: null,
     scoring: "add 25 for yes only",
     max_score: 25,
+    use_percentage: false,
   },
   {
     question_number: 18,
@@ -149,6 +166,7 @@ export const questionnaire = [
     answer: null,
     scoring: "add 25 for yes only",
     max_score: 25,
+    use_percentage: false,
   },
   {
     question_number: 19,
@@ -157,6 +175,7 @@ export const questionnaire = [
     answer: null,
     scoring: "add 25 for yes and subtract 10 for no",
     max_score: 25,
+    use_percentage: false,
   },
   {
     question_number: 20,
@@ -165,6 +184,7 @@ export const questionnaire = [
     answer: null,
     scoring: "add 25 for yes and subtract 25 for no",
     max_score: 25,
+    use_percentage: false,
   },
   {
     question_number: 21,
@@ -173,6 +193,7 @@ export const questionnaire = [
     answer: null,
     scoring: "add 10 for a and b. subtract 10 for each other level",
     max_score: 20,
+    use_percentage: false,
   },
   {
     question_number: 22,
@@ -186,6 +207,7 @@ export const questionnaire = [
     answer: null,
     scoring: "subtract 25 for a, subtract 10 for b and add 10 for c",
     max_score: 10,
+    use_percentage: false,
   },
   {
     question_number: 23,
@@ -194,6 +216,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 points per level",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 24,
@@ -203,6 +226,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "subract 5 points per level",
     max_score: 0,
+    use_percentage: false,
   },
   {
     question_number: 25,
@@ -212,6 +236,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 26,
@@ -221,6 +246,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 27,
@@ -229,6 +255,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 28,
@@ -238,6 +265,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 29,
@@ -247,6 +275,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 30,
@@ -255,6 +284,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: false,
   },
   {
     question_number: 31,
@@ -264,6 +294,7 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: true,
   },
   {
     question_number: 32,
@@ -272,5 +303,6 @@ export const questionnaire = [
     answer: 0,
     scoring: "add 10 per level",
     max_score: 100,
+    use_percentage: true,
   },
 ];
