@@ -254,6 +254,9 @@ function QuizFinish() {
     }
 
     document.getElementById("thank-you-section").style.display = "block";
+    document.getElementById("intro-section").style.display = "none";
+    document.getElementById("thank-you-section2").style.display = "block";
+    document.getElementById("intro-section2").style.display = "none";
   }, []);
 
   function firstSetScoring(maxScore, score) {
@@ -393,8 +396,15 @@ function QuizFinish() {
     onOpenDialogPress,
   }) => {
     return (
-      <Card style={{ height: "100%", width: "100%" }}>
-        <CardContent>
+      <Card
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <CardContent style={{ marginBottom: "auto" }}>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {title}
           </Typography>
@@ -512,18 +522,6 @@ function QuizFinish() {
               the start of something awesome.
             </Typography>
           </Box>
-
-          <Box display="flex" justifyContent="center" marginTop={5}>
-            <Button
-              variant="contained"
-              style={{ ...successTHubButtonStyles, marginBottom: "3rem" }}
-              href="https://msgsndr.com/widget/booking/7SpCYaNJVfyQ9SCKGwW0"
-              target="_blank"
-              rel="noopener"
-            >
-              BOOK A STRATEGY CALL
-            </Button>
-          </Box>
         </Box>
       );
     } else if (finalScore > 1200 && finalScore <= 1500) {
@@ -559,18 +557,6 @@ function QuizFinish() {
               foundations in place, and Transformational Hub has everything you
               need to fill the gaps and grow like mad. It’s pretty uncanny.
             </Typography>
-          </Box>
-
-          <Box display="flex" justifyContent="center" marginTop={5}>
-            <Button
-              variant="contained"
-              style={{ ...successTHubButtonStyles, marginBottom: "3rem" }}
-              href="https://msgsndr.com/widget/booking/7SpCYaNJVfyQ9SCKGwW0"
-              target="_blank"
-              rel="noopener"
-            >
-              BOOK A STRATEGY CALL
-            </Button>
           </Box>
         </Box>
       );
@@ -610,18 +596,6 @@ function QuizFinish() {
               feeling you could be one of those businesses too.
             </Typography>
           </Box>
-
-          <Box display="flex" justifyContent="center" marginTop={5}>
-            <Button
-              variant="contained"
-              style={{ ...successTHubButtonStyles, marginBottom: "3rem" }}
-              href="https://msgsndr.com/widget/booking/7SpCYaNJVfyQ9SCKGwW0"
-              target="_blank"
-              rel="noopener"
-            >
-              BOOK A STRATEGY CALL
-            </Button>
-          </Box>
         </Box>
       );
     }
@@ -646,8 +620,44 @@ function QuizFinish() {
       />
 
       <Stack spacing={2}>
+        <div
+          style={{
+            // backgroundImage: `url("https://transformhub.com.au/wp-content/uploads/2022/01/thub-confetti.gif")`,
+            // width: "100%",
+            // height: 500,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            // opacity: 0.5,
+            maxWidth: 800,
+          }}
+        >
+          <Box display="flex" justifyContent="center">
+            <Box>
+              <Box
+                display="flex"
+                justifyContent="center"
+                marginTop={1}
+                marginBottom={5}
+              >
+                {renderResult(finalScore)}
+              </Box>
+            </Box>
+          </Box>
+        </div>
+
+        <Divider />
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          {renderEachSectionResult()}
+        </Box>
+        <Divider />
+
         <Box alignItems="center" justifyContent="center">
-          <Typography variant="h3" textAlign="center" marginBottom={3}>
+          <Typography
+            variant="h3"
+            textAlign="center"
+            marginBottom={3}
+            marginTop={4}
+          >
             You’re ready to take your business to new heights!
           </Typography>
           <Typography
@@ -682,47 +692,6 @@ function QuizFinish() {
             BOOK A STRATEGY CALL
           </Button>
         </Box>
-        <Divider />
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
-            Scoring
-          </Typography>
-          <Box>
-            <Typography variant="h6" fontWeight="bold" fontFamily="monospace">
-              Final Score: {finalScore} | {`${computeFinalResultPercentage()}%`}
-            </Typography>
-          </Box>
-        </Box>
-        <Divider />
-
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          {renderEachSectionResult()}
-        </Box>
-
-        <div
-          style={{
-            // backgroundImage: `url("https://transformhub.com.au/wp-content/uploads/2022/01/thub-confetti.gif")`,
-            // width: "100%",
-            // height: 500,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            // opacity: 0.5,
-            maxWidth: 800,
-          }}
-        >
-          <Box display="flex" justifyContent="center">
-            <Box>
-              <Box
-                display="flex"
-                justifyContent="center"
-                marginTop={4}
-                marginBottom={5}
-              >
-                {renderResult(finalScore)}
-              </Box>
-            </Box>
-          </Box>
-        </div>
       </Stack>
     </>
   );
